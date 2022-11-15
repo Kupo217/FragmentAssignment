@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.fragment.app.findFragment
 import androidx.navigation.fragment.navArgs
 
 class SecondFragment : Fragment() {
@@ -17,7 +18,16 @@ class SecondFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_second, container, false)
 
-        view.findViewById<TextView>(R.id.tvUser).text = "First name: ${args.currentUser.firstName} \n Last name: ${args.currentUser.lastName}"
+        if (args.currentUser != null)
+        {
+            val firstName = args.currentUser!!.firstName
+            val lastName = args.currentUser!!.lastName
+            view.findViewById<TextView>(R.id.tvUser).text = "First name: $firstName \n Last name: $lastName"
+        }
+        else
+        {
+            view.findViewById<TextView>(R.id.tvUser).text = "No data received yet"
+        }
 
         return view
     }

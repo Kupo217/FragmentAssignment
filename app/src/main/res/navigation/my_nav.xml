@@ -20,8 +20,13 @@
         android:label="Profile"
         tools:layout="@layout/fragment_second" >
         <argument
+            app:nullable="true"
             android:name="currentUser"
+            android:defaultValue="@null"
             app:argType="com.example.fragmentassignment.User" />
+        <action
+            android:id="@+id/action_secondFragment_to_firstFragment"
+            app:destination="@id/firstFragment" />
     </fragment>
     <fragment
         android:id="@+id/thirdFragment"
